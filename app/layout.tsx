@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Syne } from 'next/font/google'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { ChatWidget } from '@/components/ui/ChatWidget'
 import './globals.css'
 
 const inter = Inter({
@@ -84,6 +85,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   )
