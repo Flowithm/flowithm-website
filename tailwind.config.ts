@@ -50,6 +50,7 @@ const config: Config = {
         'fade-in': 'fadeIn 0.4s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        blob: 'blob 10s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -71,6 +72,12 @@ const config: Config = {
         pulseGlow: {
           '0%, 100%': { boxShadow: '0 0 20px rgba(255, 106, 0, 0.25)' },
           '50%': { boxShadow: '0 0 40px rgba(255, 106, 0, 0.45)' },
+        },
+        blob: {
+          '0%':   { transform: 'translate(0, 0) scale(1)' },
+          '33%':  { transform: 'translate(30px, -40px) scale(1.06)' },
+          '66%':  { transform: 'translate(-20px, 20px) scale(0.94)' },
+          '100%': { transform: 'translate(0, 0) scale(1)' },
         },
       },
       screens: {
