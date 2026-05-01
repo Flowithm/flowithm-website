@@ -128,4 +128,14 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Blob animation delay helpers */
+  .animation-delay-2000 { animation-delay: 2000ms; }
+  .animation-delay-4000 { animation-delay: 4000ms; }
+
+  /* Pause marquee on hover for accessibility */
+  .marquee-track:hover .animate-marquee,
+  .marquee-track:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
 }

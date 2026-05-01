@@ -1,0 +1,7 @@
+export { HeroSection } from './HeroSection'
+export { ProblemSection } from './ProblemSection'
+export { WhatWeDoSection } from './WhatWeDoSection'
+export { FrameworkSection } from './FrameworkSection'
+export { UseCaseHighlightsSection } from './UseCaseHighlightsSection'
+export { SocialProofSection } from './SocialProofSection'
+export { CTABannerSection } from './CTABannerSection'
