@@ -1,3 +1,6 @@
+# Project context docs (local only — never commit)
+docs/
+
 # Logs
 logs
 *.log
