@@ -9,6 +9,7 @@ const STEPS = [
     bg: 'bg-primary/10',
     border: 'border-primary/20',
     glow: 'shadow-glow-orange',
+    hex: '#FF6A00',
   },
   {
     number: '02',
@@ -18,6 +19,7 @@ const STEPS = [
     bg: 'bg-secondary/10',
     border: 'border-secondary/20',
     glow: 'shadow-glow-lime',
+    hex: '#A3FF12',
   },
   {
     number: '03',
@@ -27,6 +29,7 @@ const STEPS = [
     bg: 'bg-tertiary/10',
     border: 'border-tertiary/20',
     glow: 'shadow-glow-cyan',
+    hex: '#00C2FF',
   },
   {
     number: '04',
@@ -36,6 +39,7 @@ const STEPS = [
     bg: 'bg-accent/10',
     border: 'border-accent/20',
     glow: 'shadow-glow-purple',
+    hex: '#6C5CE7',
   },
 ] as const
 
@@ -77,11 +81,25 @@ export function FrameworkSection() {
               </p>
             </div>
 
-            {/* Connector arrow (not after last step) */}
+            {/* Connector path (not after last step) */}
             {i < STEPS.length - 1 && (
               <div className="flex-shrink-0 flex items-start pt-7" aria-hidden="true">
-                <svg className="w-6 h-6 text-border-subtle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                <svg width="44" height="28" viewBox="0 0 44 28" fill="none">
+                  <defs>
+                    <linearGradient id={`fw-conn-${i}`} x1="0" y1="14" x2="44" y2="14" gradientUnits="userSpaceOnUse">
+                      <stop stopColor={step.hex} stopOpacity="0.7" />
+                      <stop offset="1" stopColor={STEPS[i + 1]?.hex ?? '#888888'} stopOpacity="0.7" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="0" y1="14" x2="36" y2="14" stroke={`url(#fw-conn-${i})`} strokeWidth="1.5" strokeDasharray="4 3" />
+                  <path
+                    d="M 31 10 L 38 14 L 31 18"
+                    stroke={STEPS[i + 1]?.hex ?? '#888888'}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeOpacity="0.7"
+                  />
                 </svg>
               </div>
             )}
