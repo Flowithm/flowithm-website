@@ -24,6 +24,124 @@ export function HeroSection() {
           }}
         />
 
+        {/* ── Road / path visual ── */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[62%]"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 22%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 22%)',
+          }}
+        >
+          <svg
+            viewBox="0 0 1440 700"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              {/* Road surface */}
+              <linearGradient id="hero-road-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#0B0B0B" stopOpacity="0" />
+                <stop offset="55%" stopColor="#0B0B0B" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#0d0d0d" stopOpacity="0.9" />
+              </linearGradient>
+              {/* Left edge — cyan, from vanishing point to bottom-left */}
+              <linearGradient id="hero-edge-cyan" gradientUnits="userSpaceOnUse" x1="720" y1="0" x2="0" y2="700">
+                <stop offset="0%" stopColor="#00C2FF" stopOpacity="0" />
+                <stop offset="50%" stopColor="#00C2FF" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#00C2FF" stopOpacity="0.9" />
+              </linearGradient>
+              {/* Right edge — lime, from vanishing point to bottom-right */}
+              <linearGradient id="hero-edge-lime" gradientUnits="userSpaceOnUse" x1="720" y1="0" x2="1440" y2="700">
+                <stop offset="0%" stopColor="#A3FF12" stopOpacity="0" />
+                <stop offset="50%" stopColor="#A3FF12" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#A3FF12" stopOpacity="0.9" />
+              </linearGradient>
+              {/* Center dashes — orange */}
+              <linearGradient id="hero-dash-orange" gradientUnits="userSpaceOnUse" x1="720" y1="0" x2="720" y2="700">
+                <stop offset="0%" stopColor="#FF6A00" stopOpacity="0" />
+                <stop offset="25%" stopColor="#FF6A00" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#FF6A00" stopOpacity="0.9" />
+              </linearGradient>
+              {/* Left lane streak — cyan */}
+              <linearGradient id="hero-streak-l" gradientUnits="userSpaceOnUse" x1="708" y1="0" x2="360" y2="700">
+                <stop offset="0%" stopColor="#00C2FF" stopOpacity="0" />
+                <stop offset="35%" stopColor="#00C2FF" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#00C2FF" stopOpacity="0.8" />
+              </linearGradient>
+              {/* Right lane streak — lime */}
+              <linearGradient id="hero-streak-r" gradientUnits="userSpaceOnUse" x1="732" y1="0" x2="1080" y2="700">
+                <stop offset="0%" stopColor="#A3FF12" stopOpacity="0" />
+                <stop offset="35%" stopColor="#A3FF12" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#A3FF12" stopOpacity="0.7" />
+              </linearGradient>
+              {/* Horizon glow — warm white light source */}
+              <radialGradient id="hero-horizon" gradientUnits="userSpaceOnUse" cx="720" cy="0" r="480">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.18" />
+                <stop offset="30%" stopColor="#ffe8d0" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+              </radialGradient>
+              {/* Soft glow filter for center dashes */}
+              <filter id="hero-glow-soft" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              {/* Stronger glow filter for edges */}
+              <filter id="hero-glow-edge" x="-50%" y="-20%" width="200%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Horizon light source */}
+            <ellipse cx="720" cy="0" rx="480" ry="110" fill="url(#hero-horizon)" />
+
+            {/* Road surface */}
+            <polygon points="695,0 745,0 1440,700 0,700" fill="url(#hero-road-fill)" />
+
+            {/* Left edge — cyan glow */}
+            <line x1="695" y1="0" x2="0" y2="700" stroke="url(#hero-edge-cyan)" strokeWidth="1.5" filter="url(#hero-glow-edge)" />
+
+            {/* Right edge — lime glow */}
+            <line x1="745" y1="0" x2="1440" y2="700" stroke="url(#hero-edge-lime)" strokeWidth="1.5" filter="url(#hero-glow-edge)" />
+
+            {/* Center dashes — orange, flows toward viewer */}
+            <line
+              x1="720" y1="0" x2="720" y2="700"
+              stroke="url(#hero-dash-orange)"
+              strokeWidth="2"
+              strokeDasharray="30 20"
+              filter="url(#hero-glow-soft)"
+              className="road-dash-anim"
+            />
+
+            {/* Left lane streak — materialises from horizon, travels toward viewer */}
+            <line
+              x1="708" y1="0" x2="360" y2="700"
+              stroke="url(#hero-streak-l)"
+              strokeWidth="1.5"
+              strokeDasharray="60 800"
+              className="road-streak-left"
+            />
+
+            {/* Right lane streak — offset by half-cycle */}
+            <line
+              x1="732" y1="0" x2="1080" y2="700"
+              stroke="url(#hero-streak-r)"
+              strokeWidth="1.5"
+              strokeDasharray="60 800"
+              className="road-streak-right"
+            />
+          </svg>
+        </div>
+
         {/* Vignette fade at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-bg to-transparent" />
       </div>

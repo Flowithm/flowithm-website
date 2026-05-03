@@ -138,4 +138,26 @@
   .marquee-track:hover .animate-marquee-reverse {
     animation-play-state: paused;
   }
+
+  /* ── Road / path animations ── */
+  .road-dash-anim {
+    animation: road-dash 1.2s linear infinite;
+  }
+
+  .road-streak-left {
+    animation: road-streak 3s linear infinite;
+  }
+
+  .road-streak-right {
+    animation: road-streak 3s linear 1.5s infinite;
+  }
+}
+
+@keyframes road-dash {
+  to { stroke-dashoffset: -50; }
+}
+
+@keyframes road-streak {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -860; }
 }
