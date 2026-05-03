@@ -76,10 +76,11 @@ export function HeroSection() {
                 <stop offset="35%" stopColor="#A3FF12" stopOpacity="0.35" />
                 <stop offset="100%" stopColor="#A3FF12" stopOpacity="0.7" />
               </linearGradient>
-              {/* Horizon radial glow */}
-              <radialGradient id="hero-horizon" gradientUnits="userSpaceOnUse" cx="720" cy="0" r="280">
-                <stop offset="0%" stopColor="#FF6A00" stopOpacity="0.22" />
-                <stop offset="100%" stopColor="#FF6A00" stopOpacity="0" />
+              {/* Horizon glow — warm white light source */}
+              <radialGradient id="hero-horizon" gradientUnits="userSpaceOnUse" cx="720" cy="0" r="480">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.18" />
+                <stop offset="30%" stopColor="#ffe8d0" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
               </radialGradient>
               {/* Soft glow filter for center dashes */}
               <filter id="hero-glow-soft" x="-30%" y="-30%" width="160%" height="160%">
@@ -99,8 +100,8 @@ export function HeroSection() {
               </filter>
             </defs>
 
-            {/* Horizon glow at vanishing point */}
-            <ellipse cx="720" cy="20" rx="280" ry="70" fill="url(#hero-horizon)" />
+            {/* Horizon light source */}
+            <ellipse cx="720" cy="0" rx="480" ry="110" fill="url(#hero-horizon)" />
 
             {/* Road surface */}
             <polygon points="695,0 745,0 1440,700 0,700" fill="url(#hero-road-fill)" />
