@@ -14,6 +14,7 @@ const SERVICES = [
     description:
       'We audit your operations, identify high-ROI AI opportunities, and build a roadmap that fits your team and budget — not just a slide deck.',
     accent: 'text-primary',
+    iconBg: 'bg-primary/10',
     border: 'hover:border-primary/30 hover:shadow-glow-orange',
   },
   {
@@ -27,6 +28,7 @@ const SERVICES = [
     description:
       'From AI-powered internal tools to customer-facing products — we design, build, and ship software that puts AI to work inside your business.',
     accent: 'text-secondary',
+    iconBg: 'bg-secondary/10',
     border: 'hover:border-secondary/30 hover:shadow-glow-lime',
   },
   {
@@ -40,6 +42,7 @@ const SERVICES = [
     description:
       'We teach your team to actually use AI — hands-on workshops, workflow integration, and ongoing support until adoption is real and measurable.',
     accent: 'text-tertiary',
+    iconBg: 'bg-tertiary/10',
     border: 'hover:border-tertiary/30 hover:shadow-glow-cyan',
   },
 ] as const
@@ -49,24 +52,24 @@ export function WhatWeDoSection() {
     <SectionWrapper aria-label="What we do">
       {/* Header */}
       <div className="text-center mb-16">
-        <p className="text-xs font-body font-semibold tracking-widest uppercase text-primary mb-4">
+        <p className="text-xs font-body font-semibold tracking-widest uppercase text-secondary mb-4">
           What We Do
         </p>
         <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight">
           Three ways we drive<br className="hidden sm:block" />{' '}
-          <span className="text-gradient-orange">real impact</span>
+          <span className="text-gradient-multi">real impact</span>
         </h2>
       </div>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {SERVICES.map(({ icon, title, description, accent, border }) => (
+        {SERVICES.map(({ icon, title, description, accent, iconBg, border }) => (
           <Card
             key={title}
             className={`p-8 flex flex-col gap-5 transition-all duration-300 ${border}`}
           >
             {/* Icon */}
-            <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center ${accent}`}>
+            <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center ${accent}`}>
               {icon}
             </div>
 

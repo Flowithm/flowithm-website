@@ -180,8 +180,12 @@ export function HeroSection() {
         </div>
 
         {/* Promise strip */}
-        <p className="mt-14 text-xs text-text-muted tracking-[0.2em] uppercase font-body">
-          AI Systems &nbsp;&middot;&nbsp; Real Outcomes &nbsp;&middot;&nbsp; 10X Impact
+        <p className="mt-14 text-xs tracking-[0.2em] uppercase font-body">
+          <span className="text-tertiary">AI Systems</span>
+          <span className="text-text-muted"> &nbsp;&middot;&nbsp; </span>
+          <span className="text-text-muted">Real Outcomes</span>
+          <span className="text-text-muted"> &nbsp;&middot;&nbsp; </span>
+          <span className="text-secondary">10X Impact</span>
         </p>
       </div>
 

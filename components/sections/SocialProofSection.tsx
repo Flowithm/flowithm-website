@@ -11,9 +11,9 @@ const TOOLS = [
 ]
 
 const STATS = [
-  { value: '12+', label: 'Industries Served' },
-  { value: '50+', label: 'AI Tools Evaluated' },
-  { value: '4-Step', label: 'Proven Framework' },
+  { value: '12+',    label: 'Industries Served',  color: 'text-gradient-lime' },
+  { value: '50+',    label: 'AI Tools Evaluated',  color: 'text-tertiary' },
+  { value: '4-Step', label: 'Proven Framework',    color: 'text-gradient-orange' },
 ]
 
 function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
@@ -50,9 +50,9 @@ export function SocialProofSection() {
       {/* Stats row */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-14">
         <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto">
-          {STATS.map(({ value, label }) => (
+          {STATS.map(({ value, label, color }) => (
             <div key={label} className="flex flex-col items-center text-center gap-1">
-              <span className="font-display font-bold text-2xl sm:text-3xl text-gradient-orange">
+              <span className={`font-display font-bold text-2xl sm:text-3xl ${color}`}>
                 {value}
               </span>
               <span className="text-xs sm:text-sm text-text-muted font-body tracking-wide">
