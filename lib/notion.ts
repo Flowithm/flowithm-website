@@ -161,9 +161,13 @@ export async function getTools(): Promise<Tool[]> {
       next: { revalidate: 3600 },
     })
 
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.error('Notion getTools HTTP error:', res.status, await res.text())
+      return []
+    }
 
     const data = await res.json()
+    console.log('Notion getTools results count:', data.results?.length)
     return (data.results ?? []).map(mapTool)
   } catch (err) {
     console.error('Notion getTools fetch failed:', err)
