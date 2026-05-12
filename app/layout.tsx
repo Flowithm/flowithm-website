@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Syne } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { ChatWidget } from '@/components/ui/ChatWidget'
@@ -86,6 +87,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ChatWidget />
+        <Analytics />
       </body>
     </html>
   )
