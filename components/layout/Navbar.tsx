@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -65,12 +66,17 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
           aria-label="Flowithm — home"
         >
-          <span className="font-display font-bold text-xl tracking-tight text-text-primary">
-            Flow<span className="text-gradient-orange">ithm</span>
-          </span>
+          <Image
+            src="/flowithm_wordmark.webp"
+            alt="Flowithm"
+            width={300}
+            height={80}
+            className="h-14 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop links */}
@@ -98,8 +104,8 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center">
-          <Button href="/contact" size="sm">
-            Let&apos;s Talk
+          <Button href="/contact?intent=call" size="sm">
+            Book a Call
           </Button>
         </div>
 
@@ -161,8 +167,8 @@ export function Navbar() {
         </ul>
 
         <div className="mt-8">
-          <Button href="/contact" size="lg" className="w-full justify-center">
-            Let&apos;s Talk
+          <Button href="/contact?intent=call" size="lg" className="w-full justify-center">
+            Book a Call
           </Button>
         </div>
       </div>

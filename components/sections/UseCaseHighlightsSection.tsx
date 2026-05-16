@@ -89,9 +89,9 @@ export async function UseCaseHighlightsSection() {
   const isEmpty = featured.length === 0
 
   return (
-    <SectionWrapper aria-label="Featured use cases">
+    <SectionWrapper aria-label="Featured use cases" className="pt-10 pb-10 md:pt-14 md:pb-12">
       {/* Header */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 md:mb-12">
         <p className="text-xs font-body font-semibold tracking-widest uppercase text-primary mb-4">
           AI in Action
         </p>
@@ -112,7 +112,7 @@ export async function UseCaseHighlightsSection() {
       </div>
 
       {/* CTA to full list */}
-      <div className="mt-12 text-center">
+      <div className="mt-8 md:mt-10 text-center">
         <Button href="/use-cases" variant="outline" size="md">
           View All Use Cases
         </Button>

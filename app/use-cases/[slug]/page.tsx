@@ -68,7 +68,7 @@ export default async function UseCaseDetailPage({
           </div>
 
           {/* Title */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-tight mb-5">
+          <h1 className="font-display font-[650] text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-tight mb-5">
             {useCase.title}
           </h1>
 

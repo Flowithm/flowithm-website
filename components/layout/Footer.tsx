@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const FOOTER_LINKS = [
@@ -21,10 +22,16 @@ export function Footer() {
           <div className="flex flex-col gap-2">
             <Link
               href="/"
-              className="font-display font-bold text-xl tracking-tight text-text-primary w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+              className="w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
               aria-label="Flowithm — home"
             >
-              Flow<span className="text-gradient-orange">ithm</span>
+              <Image
+                src="/flowithm_wordmark.webp"
+                alt="Flowithm"
+                width={300}
+                height={80}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-sm text-text-muted max-w-xs">
               From Algorithm to Impact — AI Systems. Real Outcomes.

@@ -16,6 +16,8 @@ const SERVICES = [
     accent: 'text-primary',
     iconBg: 'bg-primary/10',
     border: 'hover:border-primary/30 hover:shadow-glow-orange',
+    cta: 'Explore consulting',
+    href: '/contact?intent=consulting',
   },
   {
     icon: (
@@ -30,6 +32,8 @@ const SERVICES = [
     accent: 'text-secondary',
     iconBg: 'bg-secondary/10',
     border: 'hover:border-secondary/30 hover:shadow-glow-lime',
+    cta: 'Plan your build',
+    href: '/contact?intent=product',
   },
   {
     icon: (
@@ -44,6 +48,8 @@ const SERVICES = [
     accent: 'text-tertiary',
     iconBg: 'bg-tertiary/10',
     border: 'hover:border-tertiary/30 hover:shadow-glow-cyan',
+    cta: 'Enable your team',
+    href: '/contact?intent=training',
   },
 ] as const
 
@@ -51,7 +57,7 @@ export function WhatWeDoSection() {
   return (
     <SectionWrapper aria-label="What we do">
       {/* Header */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 md:mb-12">
         <p className="text-xs font-body font-semibold tracking-widest uppercase text-secondary mb-4">
           What We Do
         </p>
@@ -63,7 +69,7 @@ export function WhatWeDoSection() {
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {SERVICES.map(({ icon, title, description, accent, iconBg, border }) => (
+        {SERVICES.map(({ icon, title, description, accent, iconBg, border, cta, href }) => (
           <Card
             key={title}
             className={`p-8 flex flex-col gap-5 transition-all duration-300 ${border}`}
@@ -82,9 +88,21 @@ export function WhatWeDoSection() {
                 {description}
               </p>
             </div>
+
+            <a
+              href={href}
+              className={`mt-auto text-sm font-body font-semibold ${accent} hover:underline underline-offset-4`}
+            >
+              {cta} &rarr;
+            </a>
           </Card>
         ))}
       </div>
+
+      <p className="mt-6 text-center text-sm font-body text-text-muted">
+        Every engagement is delivered on <span className="text-text-primary font-semibold">Ten<span className="text-primary">X</span>era</span>,
+        Flowithm&apos;s operational AI framework.
+      </p>
     </SectionWrapper>
   )
 }

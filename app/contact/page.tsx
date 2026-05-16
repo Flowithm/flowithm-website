@@ -46,7 +46,7 @@ export default function ContactPage() {
           <p className="text-xs font-body font-semibold tracking-widest uppercase text-primary mb-6">
             Get in Touch
           </p>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-5">
+          <h1 className="font-display font-[650] text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-5">
             Let&apos;s figure out
             <br className="hidden sm:block" />{' '}
             <span className="text-gradient-orange">if we&apos;re the right fit</span>
