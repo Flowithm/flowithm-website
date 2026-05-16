@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 const ITEMS = [
-  { id: 'intakeops', label: 'IntakeOps' },
-  { id: 'knowledgeflow', label: 'KnowledgeFlow' },
-  { id: 'actionops', label: 'ActionOps' },
+  { id: 'intakeflow', label: 'IntakeFlow' },
+  { id: 'knowledgegrid', label: 'KnowledgeGrid' },
+  { id: 'actionengine', label: 'ActionEngine' },
 ]
 
 export function ProductNav() {
-  const [active, setActive] = useState('intakeops')
+  const [active, setActive] = useState('intakeflow')
 
   useEffect(() => {
     const observers: IntersectionObserver[] = []

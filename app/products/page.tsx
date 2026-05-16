@@ -6,7 +6,7 @@ import { ProductNav } from './ProductNav'
 export const metadata: Metadata = {
   title: 'Products',
   description:
-    'TenXera AI systems that automate real business operations — IntakeOps, KnowledgeFlow, and ActionOps. Production-grade from day one.',
+    'TenXera AI systems that automate real business operations — IntakeFlow, KnowledgeGrid, and ActionEngine. Production-grade from day one.',
   openGraph: {
     title: 'Products | Flowithm',
     description:
@@ -73,15 +73,15 @@ const INTEGRATION_MODES: Record<string, 'Native' | 'API' | 'Bi-directional' | 'E
 // ── Product data ──────────────────────────────────────────────────────────────
 const PRODUCTS: Product[] = [
   {
-    id: 'intakeops',
+    id: 'intakeflow',
     number: '01',
     category: 'Intake Automation',
-    name: 'IntakeOps',
+    name: 'IntakeFlow',
     tagline: 'Turn Incoming Emails & Documents into Automated Actions',
     problem:
       'Every day, your team manually reads emails, opens attachments, copies data into systems, and decides what happens next. It\'s slow, error-prone, and completely automatable.',
     description:
-      'IntakeOps puts an intelligent AI layer in front of your inbox. It reads every incoming email and document, understands what it is, extracts the data that matters, and triggers the right action — automatically, in real-time, across your existing systems.',
+      'IntakeFlow puts an intelligent AI layer in front of your inbox. It reads every incoming email and document, understands what it is, extracts the data that matters, and triggers the right action — automatically, in real-time, across your existing systems.',
     impacts: [
       { value: '70%', label: 'Emails Automated' },
       { value: '5×', label: 'Faster Processing' },
@@ -133,15 +133,15 @@ const PRODUCTS: Product[] = [
     workflowOutcome: 'Reduces manual intake effort and updates core systems in near real-time.',
   },
   {
-    id: 'knowledgeflow',
+    id: 'knowledgegrid',
     number: '02',
     category: 'AI Knowledge Base',
-    name: 'KnowledgeFlow',
+    name: 'KnowledgeGrid',
     tagline: 'AI Copilot for Enterprise Knowledge & Decisions',
     problem:
       'Your team spends hours hunting for answers that already exist — buried in a doc, an email thread, a past decision. That knowledge is locked. Every search is a productivity drain.',
     description:
-      'KnowledgeFlow connects your documents, emails, and systems into a unified AI layer. Ask it anything in plain English and get precise, sourced answers — tailored to your business context, available to your whole team in seconds.',
+      'KnowledgeGrid connects your documents, emails, and systems into a unified AI layer. Ask it anything in plain English and get precise, sourced answers — tailored to your business context, available to your whole team in seconds.',
     impacts: [
       { value: '50%', label: 'Faster Search' },
       { value: '3×', label: 'Faster Decisions' },
@@ -193,15 +193,15 @@ const PRODUCTS: Product[] = [
     workflowOutcome: 'Cuts knowledge search time and turns answers into immediate team actions.',
   },
   {
-    id: 'actionops',
+    id: 'actionengine',
     number: '03',
     category: 'Workflow Automation',
-    name: 'ActionOps',
+    name: 'ActionEngine',
     tagline: 'Automate Business Workflows with AI Execution',
     problem:
       'Your workflows move at the speed of the slowest person in the chain. Every handoff is a delay. Every manual check is a risk. Every repetitive step is capacity wasted on work that should not need a human.',
     description:
-      'ActionOps automates your business processes end-to-end. It orchestrates multi-step workflows across your tools, applies AI reasoning at every decision point, and executes actions continuously — without anyone in the loop unless you want them to be.',
+      'ActionEngine automates your business processes end-to-end. It orchestrates multi-step workflows across your tools, applies AI reasoning at every decision point, and executes actions continuously — without anyone in the loop unless you want them to be.',
     impacts: [
       { value: '60%', label: 'Workload Reduced' },
       { value: '4×', label: 'Faster Execution' },
@@ -261,17 +261,17 @@ function WorkflowNodeCard({
   node: WorkflowNode
 }) {
   return (
-    <div className="group flex items-center gap-2.5 p-2.5 md:p-3 rounded-xl border border-border-subtle bg-surface/80 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5">
+    <div className="flex items-center gap-2 min-w-0">
       <div
         className="w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center text-[10px] md:text-xs font-display font-bold flex-shrink-0"
         style={{ backgroundColor: node.bg, color: node.fg }}
       >
         {node.abbr}
-      </div>
+      </div >
       <span className="text-text-primary text-xs font-body font-medium truncate leading-tight">
         {node.label}
       </span>
-    </div>
+    </div >
   )
 }
 
