@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 const ITEMS = [
-  { id: 'intakeops',     label: 'IntakeOps' },
+  { id: 'intakeops', label: 'IntakeOps' },
   { id: 'knowledgeflow', label: 'KnowledgeFlow' },
-  { id: 'actionops',     label: 'ActionOps' },
+  { id: 'actionops', label: 'ActionOps' },
 ]
 
 export function ProductNav() {
@@ -33,7 +33,7 @@ export function ProductNav() {
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         aria-label="Products navigation"
       >
-        <ul className="flex gap-1 py-3 overflow-x-auto" role="list">
+        <ul className="flex gap-1 py-2 overflow-x-auto" role="list">
           {ITEMS.map(({ id, label }) => (
             <li key={id}>
               <a

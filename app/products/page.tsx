@@ -47,6 +47,27 @@ type Product = {
   workflowInputs: WorkflowNode[]
   workflowOutputs: WorkflowNode[]
   workflowSteps: string[]
+  workflowOutcome: string
+}
+
+const INTEGRATION_MODES: Record<string, 'Native' | 'API' | 'Bi-directional' | 'Event'> = {
+  Gmail: 'API',
+  Outlook: 'API',
+  SAP: 'Bi-directional',
+  Salesforce: 'Bi-directional',
+  ServiceNow: 'Bi-directional',
+  IFS: 'Bi-directional',
+  Notion: 'API',
+  Confluence: 'API',
+  'Google Drive': 'API',
+  Slack: 'Event',
+  Teams: 'Event',
+  HubSpot: 'Bi-directional',
+  Airtable: 'API',
+  Zapier: 'Event',
+  n8n: 'Event',
+  Jira: 'Bi-directional',
+  Webhook: 'Event',
 }
 
 // ── Product data ──────────────────────────────────────────────────────────────
@@ -63,7 +84,7 @@ const PRODUCTS: Product[] = [
       'IntakeOps puts an intelligent AI layer in front of your inbox. It reads every incoming email and document, understands what it is, extracts the data that matters, and triggers the right action — automatically, in real-time, across your existing systems.',
     impacts: [
       { value: '70%', label: 'Emails Automated' },
-      { value: '5×',  label: 'Faster Processing' },
+      { value: '5×', label: 'Faster Processing' },
       { value: '90%', label: 'Accuracy' },
     ],
     features: [
@@ -81,12 +102,12 @@ const PRODUCTS: Product[] = [
       },
     ],
     integrations: [
-      { label: 'Gmail',       bg: '#EA4335', fg: '#fff' },
-      { label: 'Outlook',     bg: '#0078D4', fg: '#fff' },
-      { label: 'SAP',         bg: '#003366', fg: '#fff' },
-      { label: 'Salesforce',  bg: '#00A1E0', fg: '#fff' },
-      { label: 'ServiceNow',  bg: '#62D84E', fg: '#111' },
-      { label: 'IFS',         bg: '#1C2B4A', fg: '#fff' },
+      { label: 'Gmail', bg: '#EA4335', fg: '#fff' },
+      { label: 'Outlook', bg: '#0078D4', fg: '#fff' },
+      { label: 'SAP', bg: '#003366', fg: '#fff' },
+      { label: 'Salesforce', bg: '#00A1E0', fg: '#fff' },
+      { label: 'ServiceNow', bg: '#62D84E', fg: '#111' },
+      { label: 'IFS', bg: '#1C2B4A', fg: '#fff' },
     ],
     accent: 'text-primary',
     accentBg: 'bg-primary/10',
@@ -97,18 +118,19 @@ const PRODUCTS: Product[] = [
     workflowInputLabel: 'Incoming Channels',
     workflowOutputLabel: 'Enterprise Systems',
     workflowInputs: [
-      { label: 'Gmail',        abbr: 'GM', bg: '#EA4335', fg: '#fff' },
-      { label: 'Outlook',      abbr: 'OL', bg: '#0078D4', fg: '#fff' },
+      { label: 'Gmail', abbr: 'GM', bg: '#EA4335', fg: '#fff' },
+      { label: 'Outlook', abbr: 'OL', bg: '#0078D4', fg: '#fff' },
       { label: 'Shared Inbox', abbr: 'IN', bg: '#374151', fg: '#fff' },
-      { label: 'PDF Uploads',  abbr: 'PDF', bg: '#DC2626', fg: '#fff' },
+      { label: 'PDF Uploads', abbr: 'PDF', bg: '#DC2626', fg: '#fff' },
     ],
     workflowOutputs: [
-      { label: 'SAP',         abbr: 'SAP', bg: '#003366', fg: '#fff' },
-      { label: 'Salesforce',  abbr: 'SF',  bg: '#00A1E0', fg: '#fff' },
-      { label: 'ServiceNow',  abbr: 'SN',  bg: '#62D84E', fg: '#111' },
-      { label: 'IFS',         abbr: 'IFS', bg: '#1C2B4A', fg: '#fff' },
+      { label: 'SAP', abbr: 'SAP', bg: '#003366', fg: '#fff' },
+      { label: 'Salesforce', abbr: 'SF', bg: '#00A1E0', fg: '#fff' },
+      { label: 'ServiceNow', abbr: 'SN', bg: '#62D84E', fg: '#111' },
+      { label: 'IFS', abbr: 'IFS', bg: '#1C2B4A', fg: '#fff' },
     ],
     workflowSteps: ['Email Arrives', 'AI Reads', 'Data Extracted', 'Classified', 'ERP Updated'],
+    workflowOutcome: 'Reduces manual intake effort and updates core systems in near real-time.',
   },
   {
     id: 'knowledgeflow',
@@ -122,7 +144,7 @@ const PRODUCTS: Product[] = [
       'KnowledgeFlow connects your documents, emails, and systems into a unified AI layer. Ask it anything in plain English and get precise, sourced answers — tailored to your business context, available to your whole team in seconds.',
     impacts: [
       { value: '50%', label: 'Faster Search' },
-      { value: '3×',  label: 'Faster Decisions' },
+      { value: '3×', label: 'Faster Decisions' },
       { value: '60%', label: 'Less Dependency' },
     ],
     features: [
@@ -140,12 +162,12 @@ const PRODUCTS: Product[] = [
       },
     ],
     integrations: [
-      { label: 'Notion',       bg: '#000000', fg: '#fff' },
-      { label: 'Confluence',   bg: '#0052CC', fg: '#fff' },
+      { label: 'Notion', bg: '#000000', fg: '#fff' },
+      { label: 'Confluence', bg: '#0052CC', fg: '#fff' },
       { label: 'Google Drive', bg: '#34A853', fg: '#fff' },
-      { label: 'Slack',        bg: '#4A154B', fg: '#fff' },
-      { label: 'Outlook',      bg: '#0078D4', fg: '#fff' },
-      { label: 'Teams',        bg: '#5059C9', fg: '#fff' },
+      { label: 'Slack', bg: '#4A154B', fg: '#fff' },
+      { label: 'Outlook', bg: '#0078D4', fg: '#fff' },
+      { label: 'Teams', bg: '#5059C9', fg: '#fff' },
     ],
     accent: 'text-secondary',
     accentBg: 'bg-secondary/10',
@@ -156,18 +178,19 @@ const PRODUCTS: Product[] = [
     workflowInputLabel: 'Knowledge Sources',
     workflowOutputLabel: 'Delivered As',
     workflowInputs: [
-      { label: 'Notion',       abbr: 'N',  bg: '#000000', fg: '#fff' },
-      { label: 'Confluence',   abbr: 'C',  bg: '#0052CC', fg: '#fff' },
+      { label: 'Notion', abbr: 'N', bg: '#000000', fg: '#fff' },
+      { label: 'Confluence', abbr: 'C', bg: '#0052CC', fg: '#fff' },
       { label: 'Google Drive', abbr: 'GD', bg: '#34A853', fg: '#fff' },
-      { label: 'Slack',        abbr: 'SL', bg: '#4A154B', fg: '#fff' },
+      { label: 'Slack', abbr: 'SL', bg: '#4A154B', fg: '#fff' },
     ],
     workflowOutputs: [
       { label: 'Slack Answer', abbr: 'SL', bg: '#4A154B', fg: '#fff' },
       { label: 'Email Digest', abbr: 'EM', bg: '#3B82F6', fg: '#fff' },
-      { label: 'Teams Bot',    abbr: 'T',  bg: '#5059C9', fg: '#fff' },
-      { label: 'Dashboard',    abbr: 'DB', bg: '#1F2937', fg: '#A3FF12' },
+      { label: 'Teams Bot', abbr: 'T', bg: '#5059C9', fg: '#fff' },
+      { label: 'Dashboard', abbr: 'DB', bg: '#1F2937', fg: '#A3FF12' },
     ],
     workflowSteps: ['Query Asked', 'Sources Scanned', 'Context Applied', 'Answer Generated', 'Action Triggered'],
+    workflowOutcome: 'Cuts knowledge search time and turns answers into immediate team actions.',
   },
   {
     id: 'actionops',
@@ -181,8 +204,8 @@ const PRODUCTS: Product[] = [
       'ActionOps automates your business processes end-to-end. It orchestrates multi-step workflows across your tools, applies AI reasoning at every decision point, and executes actions continuously — without anyone in the loop unless you want them to be.',
     impacts: [
       { value: '60%', label: 'Workload Reduced' },
-      { value: '4×',  label: 'Faster Execution' },
-      { value: '∞',   label: 'Continuous Optimisation' },
+      { value: '4×', label: 'Faster Execution' },
+      { value: '∞', label: 'Continuous Optimisation' },
     ],
     features: [
       {
@@ -199,12 +222,12 @@ const PRODUCTS: Product[] = [
       },
     ],
     integrations: [
-      { label: 'HubSpot',   bg: '#FF7A59', fg: '#fff' },
+      { label: 'HubSpot', bg: '#FF7A59', fg: '#fff' },
       { label: 'Salesforce', bg: '#00A1E0', fg: '#fff' },
-      { label: 'Slack',     bg: '#4A154B', fg: '#fff' },
-      { label: 'Airtable',  bg: '#FFBF00', fg: '#111' },
-      { label: 'Zapier',    bg: '#FF4A00', fg: '#fff' },
-      { label: 'n8n',       bg: '#1A1A1A', fg: '#EA4B71' },
+      { label: 'Slack', bg: '#4A154B', fg: '#fff' },
+      { label: 'Airtable', bg: '#FFBF00', fg: '#111' },
+      { label: 'Zapier', bg: '#FF4A00', fg: '#fff' },
+      { label: 'n8n', bg: '#1A1A1A', fg: '#EA4B71' },
     ],
     accent: 'text-tertiary',
     accentBg: 'bg-tertiary/10',
@@ -215,34 +238,30 @@ const PRODUCTS: Product[] = [
     workflowInputLabel: 'Workflow Triggers',
     workflowOutputLabel: 'Automated Outputs',
     workflowInputs: [
-      { label: 'HubSpot',  abbr: 'HS', bg: '#FF7A59', fg: '#fff' },
-      { label: 'Webhook',  abbr: 'WH', bg: '#374151', fg: '#fff' },
+      { label: 'HubSpot', abbr: 'HS', bg: '#FF7A59', fg: '#fff' },
+      { label: 'Webhook', abbr: 'WH', bg: '#374151', fg: '#fff' },
       { label: 'Airtable', abbr: 'AT', bg: '#FFBF00', fg: '#111' },
-      { label: 'Slack',    abbr: 'SL', bg: '#4A154B', fg: '#fff' },
+      { label: 'Slack', abbr: 'SL', bg: '#4A154B', fg: '#fff' },
     ],
     workflowOutputs: [
       { label: 'Salesforce', abbr: 'SF', bg: '#00A1E0', fg: '#fff' },
-      { label: 'Jira',       abbr: 'J',  bg: '#0052CC', fg: '#fff' },
-      { label: 'Zapier',     abbr: 'Z',  bg: '#FF4A00', fg: '#fff' },
-      { label: 'n8n',        abbr: 'n8', bg: '#1A1A1A', fg: '#EA4B71' },
+      { label: 'Jira', abbr: 'J', bg: '#0052CC', fg: '#fff' },
+      { label: 'Zapier', abbr: 'Z', bg: '#FF4A00', fg: '#fff' },
+      { label: 'n8n', abbr: 'n8', bg: '#1A1A1A', fg: '#EA4B71' },
     ],
     workflowSteps: ['Trigger Fired', 'AI Decides', 'Routes Task', 'Executes', 'Self-Optimises'],
+    workflowOutcome: 'Automates cross-tool execution so teams can focus on high-value decisions.',
   },
 ]
 
 // ── Workflow node card ─────────────────────────────────────────────────────────
 function WorkflowNodeCard({
   node,
-  accentHex,
 }: {
   node: WorkflowNode
-  accentHex: string
 }) {
   return (
-    <div
-      className="group flex items-center gap-2.5 p-2.5 md:p-3 rounded-xl border border-border-subtle bg-surface/80 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5"
-      style={{ ['--hover-border' as string]: accentHex }}
-    >
+    <div className="group flex items-center gap-2.5 p-2.5 md:p-3 rounded-xl border border-border-subtle bg-surface/80 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5">
       <div
         className="w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center text-[10px] md:text-xs font-display font-bold flex-shrink-0"
         style={{ backgroundColor: node.bg, color: node.fg }}
@@ -325,7 +344,7 @@ function WorkflowVisual({ product }: { product: Product }) {
       </div>
 
       {/* ── Main diagram ── */}
-      <div className="relative z-10 p-6 md:p-10">
+      <div className="relative z-10 p-4 sm:p-6 md:p-10">
 
         {/* Column labels row */}
         <div className="hidden lg:flex items-center mb-4">
@@ -345,16 +364,16 @@ function WorkflowVisual({ product }: { product: Product }) {
         </div>
 
         {/* Diagram row */}
-        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-0">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 sm:gap-6 lg:gap-0">
 
           {/* ── Left inputs ── */}
           <div className="w-full lg:flex-1">
             <p className="lg:hidden text-[10px] font-body font-semibold tracking-[0.2em] uppercase text-text-muted mb-3">
               {product.workflowInputLabel}
             </p>
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
               {product.workflowInputs.map((node) => (
-                <WorkflowNodeCard key={node.label} node={node} accentHex={product.accentHex} />
+                <WorkflowNodeCard key={node.label} node={node} />
               ))}
             </div>
           </div>
@@ -363,14 +382,14 @@ function WorkflowVisual({ product }: { product: Product }) {
           <WorkflowConnector accentHex={product.accentHex} accentBar={product.accentBar} />
 
           {/* ── Engine ── */}
-          <div className="flex-shrink-0 flex flex-col items-center">
-            <div className="relative flex items-center justify-center w-40 h-40 xl:w-48 xl:h-48">
+          <div className="flex-shrink-0 flex flex-col items-center my-1 lg:my-0">
+            <div className="relative flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 xl:w-48 xl:h-48">
 
               {/* Outermost pulse ring */}
               <div
                 className="workflow-ring-pulse absolute rounded-full border"
                 style={{
-                  width: '160px', height: '160px',
+                  width: 'clamp(120px, 34vw, 160px)', height: 'clamp(120px, 34vw, 160px)',
                   borderColor: `${product.accentHex}25`,
                 }}
                 aria-hidden="true"
@@ -379,7 +398,7 @@ function WorkflowVisual({ product }: { product: Product }) {
               <div
                 className="workflow-ring-pulse-delay absolute rounded-full border"
                 style={{
-                  width: '130px', height: '130px',
+                  width: 'clamp(96px, 28vw, 130px)', height: 'clamp(96px, 28vw, 130px)',
                   borderColor: `${product.accentHex}35`,
                 }}
                 aria-hidden="true"
@@ -388,7 +407,7 @@ function WorkflowVisual({ product }: { product: Product }) {
               <div
                 className="absolute rounded-full border"
                 style={{
-                  width: '108px', height: '108px',
+                  width: 'clamp(84px, 24vw, 108px)', height: 'clamp(84px, 24vw, 108px)',
                   borderColor: `${product.accentHex}30`,
                 }}
                 aria-hidden="true"
@@ -396,7 +415,7 @@ function WorkflowVisual({ product }: { product: Product }) {
 
               {/* Core circle */}
               <div
-                className="relative w-24 h-24 xl:w-28 xl:h-28 rounded-full flex flex-col items-center justify-center text-center px-2 z-10"
+                className="relative w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28 rounded-full flex flex-col items-center justify-center text-center px-2 z-10"
                 style={{
                   background: `radial-gradient(circle at center, ${product.accentHex}28, ${product.accentHex}08)`,
                   border: `1px solid ${product.accentHex}40`,
@@ -404,13 +423,13 @@ function WorkflowVisual({ product }: { product: Product }) {
                 }}
               >
                 <span
-                  className="font-display font-bold text-sm xl:text-base leading-tight"
+                  className="font-display font-bold text-xs sm:text-sm xl:text-base leading-tight"
                   style={{ color: product.accentHex }}
                 >
                   {product.name}
                 </span>
-                <span className="text-text-muted text-[9px] xl:text-[10px] font-body leading-tight mt-0.5 tracking-wider uppercase">
-                  AI Engine
+                <span className="text-text-muted text-[8px] sm:text-[9px] xl:text-[10px] font-body leading-tight mt-0.5 tracking-[0.14em] uppercase">
+                  TenXera Framework
                 </span>
               </div>
 
@@ -432,25 +451,25 @@ function WorkflowVisual({ product }: { product: Product }) {
             <p className="lg:hidden text-[10px] font-body font-semibold tracking-[0.2em] uppercase text-text-muted mb-3 text-right">
               {product.workflowOutputLabel}
             </p>
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
               {product.workflowOutputs.map((node) => (
-                <WorkflowNodeCard key={node.label} node={node} accentHex={product.accentHex} />
+                <WorkflowNodeCard key={node.label} node={node} />
               ))}
             </div>
           </div>
         </div>
 
         {/* ── Step flow ── */}
-        <div className="relative mt-8 pt-7 border-t border-border-subtle">
+        <div className="relative mt-6 sm:mt-8 pt-6 sm:pt-7 border-t border-border-subtle">
           {/* Connecting gradient line behind the steps */}
           <div
-            className="absolute top-7 left-0 right-0 mx-8 h-px"
+            className="hidden sm:block absolute top-7 left-0 right-0 mx-8 h-px"
             style={{ background: `linear-gradient(to right, transparent, ${product.accentHex}40, transparent)` }}
             aria-hidden="true"
           />
-          <div className="relative flex items-start justify-between gap-2">
+          <div className="relative grid grid-cols-2 sm:flex items-start justify-between gap-3 pb-1">
             {product.workflowSteps.map((step, i) => (
-              <div key={step} className="relative flex flex-col items-center gap-2 flex-1 z-10">
+              <div key={step} className="relative flex flex-col items-center gap-2 flex-1 min-w-0 z-10">
                 {/* Step circle */}
                 <div
                   className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
@@ -474,21 +493,34 @@ function WorkflowVisual({ product }: { product: Product }) {
             ))}
           </div>
         </div>
+
+        <p className="mt-5 text-center text-xs sm:text-sm font-body text-text-muted max-w-2xl mx-auto leading-relaxed">
+          Outcome: {product.workflowOutcome}
+        </p>
       </div>
     </div>
   )
 }
 
 // ── Integration badge ─────────────────────────────────────────────────────────
-function IntegrationBadge({ label, bg }: { label: string; bg: string; fg: string }) {
+function IntegrationBadge({ label, bg, fg }: { label: string; bg: string; fg: string }) {
+  const mode = INTEGRATION_MODES[label] ?? 'API'
+
   return (
     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border-subtle bg-surface text-text-muted text-xs font-body transition-colors duration-150 hover:border-border-subtle/60">
       <span
         className="inline-flex w-3 h-3 rounded-full flex-shrink-0"
-        style={{ backgroundColor: bg, boxShadow: `0 0 4px ${bg}80` }}
+        style={{
+          backgroundColor: bg,
+          boxShadow: `0 0 4px ${bg}80`,
+          border: `1px solid ${fg}55`,
+        }}
         aria-hidden="true"
       />
       {label}
+      <span className="text-[10px] uppercase tracking-wide text-text-muted/80">
+        {mode}
+      </span>
     </span>
   )
 }
@@ -499,7 +531,7 @@ export default function ProductsPage() {
     <>
       {/* ── Hero ── */}
       <section
-        className="relative pt-36 pb-16 md:pt-44 md:pb-20 overflow-hidden"
+        className="relative pt-36 pb-6 md:pt-44 md:pb-10 overflow-hidden"
         aria-label="Products hero"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -522,6 +554,18 @@ export default function ProductsPage() {
             Automate incoming operations, enterprise workflows, and business execution with AI systems
             designed for production — not experimentation.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            {[
+              { value: '70%', label: 'less manual ops' },
+              { value: '5×', label: 'faster processing' },
+              { value: 'Wk 1', label: 'first outcomes' },
+            ].map(({ value, label }) => (
+              <div key={label} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-subtle bg-surface/60 backdrop-blur-sm">
+                <span className="font-display font-bold text-sm text-primary">{value}</span>
+                <span className="text-xs font-body text-text-muted">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -533,10 +577,10 @@ export default function ProductsPage() {
         <section
           key={product.id}
           id={product.id}
-          className={i % 2 === 1 ? 'bg-surface border-y border-border-subtle' : ''}
+          className={`${i % 2 === 1 ? 'bg-surface border-y border-border-subtle' : ''} scroll-mt-28 md:scroll-mt-32`}
           aria-label={`TenXera ${product.name}`}
         >
-          <SectionWrapper as="div">
+          <SectionWrapper as="div" className="pt-6 pb-7 md:pt-8 md:pb-9">
 
             {/* ── Product identity ── */}
             <div className="mb-10">
@@ -580,7 +624,7 @@ export default function ProductsPage() {
             </div>
 
             {/* ── Impact stats ── */}
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
               {product.impacts.map(({ value, label }) => (
                 <div
                   key={label}
@@ -638,8 +682,8 @@ export default function ProductsPage() {
 
             {/* ── CTA ── */}
             <div className="flex flex-col xs:flex-row gap-3">
-              <Button href="/contact" size="lg">Book a Demo</Button>
-              <Button href="/contact" variant="outline" size="lg">Ask a Question</Button>
+              <Button href="/contact?intent=demo" size="lg">Book a Demo</Button>
+              <Button href="/use-cases" variant="outline" size="lg">See Live Use Cases</Button>
             </div>
 
           </SectionWrapper>
