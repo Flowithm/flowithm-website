@@ -183,8 +183,8 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div className="flex flex-col xs:flex-row gap-3 justify-center items-center">
-          <Button href="/contact?intent=call" size="lg">
-            Book a Call
+          <Button href="/ai-readiness" size="lg">
+            Start Free AI Assessment
           </Button>
           <Button href="/use-cases" variant="outline" size="lg">
             See Our Work
