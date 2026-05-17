@@ -145,10 +145,10 @@ export default function AboutPage() {
                                 We are a team of AI practitioners, product engineers, and business operators. We have built AI-powered products from scratch, run operations inside growing companies, and seen first-hand what makes AI initiatives succeed or quietly die.
                             </p>
                             <p>
-                                That experience is why we work differently. We don't parachute in with a framework and disappear. We embed, we build, we measure — and we stay until the outcome is real.
+                                That experience is why we work differently. We don&apos;t parachute in with a framework and disappear. We embed, we build, we measure — and we stay until the outcome is real.
                             </p>
                             <p>
-                                Our clients are SMBs who are serious about applying AI and tired of consultants who don't understand their constraints. We speak both languages: boardroom strategy and shipping code.
+                                Our clients are SMBs who are serious about applying AI and tired of consultants who don&apos;t understand their constraints. We speak both languages: boardroom strategy and shipping code.
                             </p>
                         </div>
 
@@ -210,13 +210,13 @@ export default function AboutPage() {
             <SectionWrapper aria-label="What makes us different">
                 <div className="text-center mb-14">
                     <p className="text-xs font-body font-semibold tracking-widest uppercase text-primary mb-4">
-                        Why We're Different
+                        Why We&apos;re Different
                     </p>
                     <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight max-w-3xl mx-auto leading-tight">
                         Most AI consultants sell strategy. <span className="text-gradient-orange">We sell results.</span>
                     </h2>
                     <p className="mt-6 text-text-muted text-base max-w-xl mx-auto font-body leading-relaxed">
-                        The gap between "AI strategy" and "AI that works" is where most engagements fail. We live in that gap and close it.
+                        The gap between &quot;AI strategy&quot; and &quot;AI that works&quot; is where most engagements fail. We live in that gap and close it.
                     </p>
                 </div>
 
@@ -249,11 +249,11 @@ export default function AboutPage() {
                 />
                 <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight mb-4">
-                        Want to know if we're
+                        Want to know if we&apos;re
                         <br />the right fit?
                     </h2>
                     <p className="text-text-muted text-lg font-body mb-10 max-w-xl mx-auto leading-relaxed">
-                        Tell us your challenge. We'll give you an honest answer, and if we're not the right team for the job, we'll tell you that too.
+                        Tell us your challenge. We&apos;ll give you an honest answer, and if we&apos;re not the right team for the job, we&apos;ll tell you that too.
                     </p>
                     <Button href="/contact?intent=call" size="lg">
                         Book a Call
