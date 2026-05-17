@@ -117,9 +117,6 @@ export default function AboutPage() {
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="text-xs font-body font-semibold tracking-widest uppercase text-primary mb-6">
-                        About Flowithm
-                    </p>
                     <h1 className="font-display font-[650] text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-6">
                         We turn intelligence
                         <br className="hidden sm:block" /> into <span className="text-gradient-orange">real outcomes</span>
