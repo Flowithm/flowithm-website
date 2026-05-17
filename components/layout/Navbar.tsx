@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui'
 
 const NAV_LINKS = [
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Products', href: '/products' },
   { label: 'Use Cases', href: '/use-cases' },
   { label: 'Tools', href: '/tools' },
