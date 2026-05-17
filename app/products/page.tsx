@@ -70,6 +70,45 @@ const INTEGRATION_MODES: Record<string, 'Native' | 'API' | 'Bi-directional' | 'E
   Webhook: 'Event',
 }
 
+type IconGlyph = {
+  text: string
+  bg: string
+  fg: string
+}
+
+const ICON_GLYPHS: Record<string, IconGlyph> = {
+  Gmail: { text: 'M', bg: '#EA4335', fg: '#fff' },
+  Outlook: { text: 'O', bg: '#0078D4', fg: '#fff' },
+  SAP: { text: 'SAP', bg: '#0FAAFF', fg: '#0B0B0B' },
+  Salesforce: { text: 'SF', bg: '#00A1E0', fg: '#fff' },
+  ServiceNow: { text: 'SN', bg: '#62D84E', fg: '#0B0B0B' },
+  IFS: { text: 'IFS', bg: '#1C2B4A', fg: '#fff' },
+  Notion: { text: 'N', bg: '#111', fg: '#fff' },
+  Confluence: { text: 'C', bg: '#0052CC', fg: '#fff' },
+  'Google Drive': { text: 'GD', bg: '#34A853', fg: '#fff' },
+  Slack: { text: 'S', bg: '#4A154B', fg: '#fff' },
+  Teams: { text: 'T', bg: '#5059C9', fg: '#fff' },
+  HubSpot: { text: 'HS', bg: '#FF7A59', fg: '#fff' },
+  Airtable: { text: 'AT', bg: '#18BFFF', fg: '#111' },
+  Zapier: { text: 'Z', bg: '#FF4A00', fg: '#fff' },
+  n8n: { text: 'n8', bg: '#EA4B71', fg: '#fff' },
+  Jira: { text: 'J', bg: '#0052CC', fg: '#fff' },
+}
+
+const ICON_ALIAS: Record<string, string> = {
+  'Slack Answer': 'Slack',
+  'Email Digest': 'Outlook',
+  'Teams Bot': 'Teams',
+  Dashboard: 'Notion',
+  'Shared Inbox': 'Outlook',
+  'PDF Uploads': 'Gmail',
+}
+
+function getIconGlyph(label: string) {
+  const canonical = ICON_ALIAS[label] ?? label
+  return ICON_GLYPHS[canonical]
+}
+
 // ── Product data ──────────────────────────────────────────────────────────────
 const PRODUCTS: Product[] = [
   {
@@ -260,13 +299,22 @@ function WorkflowNodeCard({
 }: {
   node: WorkflowNode
 }) {
+  const icon = getIconGlyph(node.label)
+
   return (
     <div className="flex items-center gap-2 min-w-0">
       <div
-        className="w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center text-[10px] md:text-xs font-display font-bold flex-shrink-0"
+        className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center text-[10px] md:text-xs font-display font-bold flex-shrink-0"
         style={{ backgroundColor: node.bg, color: node.fg }}
       >
-        {node.abbr}
+        {icon ? (
+          <span
+            className="px-1.5 py-0.5 rounded text-[10px] md:text-[11px] font-bold leading-none"
+            style={{ backgroundColor: icon.bg, color: icon.fg }}
+          >
+            {icon.text}
+          </span>
+        ) : node.abbr}
       </div >
       <span className="text-text-primary text-xs font-body font-medium truncate leading-tight">
         {node.label}
@@ -428,8 +476,8 @@ function WorkflowVisual({ product }: { product: Product }) {
                 >
                   {product.name}
                 </span>
-                <span className="text-text-muted text-[8px] sm:text-[9px] xl:text-[10px] font-body leading-tight mt-0.5 tracking-[0.14em] uppercase">
-                  TenXera Framework
+                <span className="text-text-muted text-[8px] sm:text-[9px] xl:text-[10px] font-body leading-tight mt-0.5 tracking-[0.08em]">
+                  Ten<span className="text-primary">X</span>era Framework
                 </span>
               </div>
 
@@ -505,18 +553,32 @@ function WorkflowVisual({ product }: { product: Product }) {
 // ── Integration badge ─────────────────────────────────────────────────────────
 function IntegrationBadge({ label, bg, fg }: { label: string; bg: string; fg: string }) {
   const mode = INTEGRATION_MODES[label] ?? 'API'
+  const icon = getIconGlyph(label)
+  const fallbackText = label.slice(0, 2).toUpperCase()
 
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border-subtle bg-surface text-text-muted text-xs font-body transition-colors duration-150 hover:border-border-subtle/60">
-      <span
-        className="inline-flex w-3 h-3 rounded-full flex-shrink-0"
-        style={{
-          backgroundColor: bg,
-          boxShadow: `0 0 4px ${bg}80`,
-          border: `1px solid ${fg}55`,
-        }}
-        aria-hidden="true"
-      />
+    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-subtle bg-surface text-text-muted text-xs font-body transition-colors duration-150 hover:border-border-subtle/60">
+      {icon ? (
+        <span
+          className="inline-flex min-w-[22px] h-[22px] px-1 rounded-[4px] items-center justify-center text-[10px] font-bold leading-none flex-shrink-0"
+          style={{ backgroundColor: icon.bg, color: icon.fg }}
+          aria-hidden="true"
+        >
+          {icon.text}
+        </span>
+      ) : (
+        <span
+          className="inline-flex w-5 h-5 rounded-sm flex-shrink-0 items-center justify-center text-[9px] font-bold"
+          style={{
+            backgroundColor: `${bg}1A`,
+            color: bg,
+            border: `1px solid ${fg}55`,
+          }}
+          aria-hidden="true"
+        >
+          {fallbackText}
+        </span>
+      )}
       {label}
       <span className="text-[10px] uppercase tracking-wide text-text-muted/80">
         {mode}
@@ -531,7 +593,7 @@ export default function ProductsPage() {
     <>
       {/* ── Hero ── */}
       <section
-        className="relative pt-36 pb-6 md:pt-44 md:pb-10 overflow-hidden"
+        className="relative pt-20 pb-5 md:pt-24 md:pb-8 overflow-hidden"
         aria-label="Products hero"
       >
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -543,10 +605,10 @@ export default function ProductsPage() {
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border-subtle bg-surface mb-6">
             <span className="text-xs font-body font-semibold tracking-widest uppercase text-text-muted">
-              TenXera Product Suite
+              TenXera Product Suite by Flowithm
             </span>
           </div>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-6">
+          <h1 className="font-display font-[650] text-4xl sm:text-5xl md:text-[56px] tracking-tight text-text-primary leading-[1.06] mb-6">
             AI Systems That Automate{' '}
             <span className="text-gradient-orange">Real Business Operations</span>
           </h1>
@@ -556,13 +618,13 @@ export default function ProductsPage() {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {[
-              { value: '70%', label: 'less manual ops' },
-              { value: '5×', label: 'faster processing' },
-              { value: 'Wk 1', label: 'first outcomes' },
-            ].map(({ value, label }) => (
-              <div key={label} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-subtle bg-surface/60 backdrop-blur-sm">
-                <span className="font-display font-bold text-sm text-primary">{value}</span>
-                <span className="text-xs font-body text-text-muted">{label}</span>
+              { value: '70%', label: 'less manual ops', valueClass: 'text-primary', chipClass: 'border-primary/25 bg-primary/10' },
+              { value: '5×', label: 'faster processing', valueClass: 'text-secondary', chipClass: 'border-secondary/25 bg-secondary/10' },
+              { value: 'Wk 1', label: 'first outcomes', valueClass: 'text-tertiary', chipClass: 'border-tertiary/25 bg-tertiary/10' },
+            ].map(({ value, label, valueClass, chipClass }) => (
+              <div key={label} className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm ${chipClass}`}>
+                <span className={`font-display font-bold text-sm ${valueClass}`}>{value}</span>
+                <span className="text-xs font-body text-text-primary/85">{label}</span>
               </div>
             ))}
           </div>
@@ -590,7 +652,7 @@ export default function ProductsPage() {
                   TenXera &nbsp;·&nbsp; {product.number} &nbsp;·&nbsp; {product.category}
                 </span>
               </div>
-              <h2 className="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-text-primary mb-3">
+              <h2 className="font-display font-[650] text-4xl sm:text-5xl tracking-tight text-text-primary mb-3">
                 {product.name}
               </h2>
               <p className={`font-display font-semibold text-xl sm:text-2xl ${product.accent} leading-snug max-w-3xl`}>
@@ -630,7 +692,7 @@ export default function ProductsPage() {
                   key={label}
                   className="flex flex-col items-center text-center p-5 rounded-2xl border border-border-subtle bg-surface"
                 >
-                  <span className={`font-display font-extrabold text-3xl sm:text-4xl ${product.accent} mb-1`}>
+                  <span className={`font-display font-[650] text-3xl sm:text-4xl ${product.accent} mb-1`}>
                     {value}
                   </span>
                   <span className="text-text-muted text-xs sm:text-sm font-body tracking-wide">

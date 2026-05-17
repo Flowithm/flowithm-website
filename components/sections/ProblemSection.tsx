@@ -1,7 +1,7 @@
 export function ProblemSection() {
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden border-y border-border-subtle bg-surface"
+      className="relative py-12 md:py-16 overflow-hidden border-y border-border-subtle bg-surface"
       aria-label="Problem statement"
     >
       {/* Subtle orange glow behind text */}

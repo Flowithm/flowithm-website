@@ -19,7 +19,7 @@ export function SectionWrapper({
   ...props
 }: SectionWrapperProps) {
   return (
-    <Tag className={cn('py-20 md:py-28', className)} {...props}>
+    <Tag className={cn('py-14 md:py-20', className)} {...props}>
       <div className={cn('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', innerClassName)}>
         {children}
       </div>

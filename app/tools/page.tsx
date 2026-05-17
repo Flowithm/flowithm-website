@@ -258,7 +258,7 @@ export default async function ToolsPage({
           <p className="text-xs font-body font-semibold tracking-widest uppercase text-secondary mb-6">
             The AI Toolkit
           </p>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-5">
+          <h1 className="font-display font-[650] text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.06] mb-5">
             Honest reviews.{' '}
             <span className="text-gradient-lime">Practical guidance.</span>
           </h1>

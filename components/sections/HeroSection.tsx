@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import { Button } from '@/components/ui'
 
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-[82vh] md:min-h-[90vh] flex items-start justify-center overflow-hidden pt-16"
       aria-label="Hero"
     >
       {/* ── Animated background ── */}
@@ -147,7 +148,18 @@ export function HeroSection() {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 py-24 md:py-32">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-14 md:pt-16 md:pb-20">
+        <div className="mx-auto mb-5 flex justify-center">
+          <Image
+            src="/flowithm_wordmark.webp"
+            alt="Flowithm"
+            width={300}
+            height={80}
+            className="h-10 sm:h-12 w-auto"
+            priority
+          />
+        </div>
+
         {/* Eyebrow badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/5 mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
@@ -157,7 +169,7 @@ export function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-display font-extrabold text-5xl xs:text-6xl sm:text-7xl md:text-8xl tracking-tight text-text-primary leading-[1.04] mb-6">
+        <h1 className="font-display font-[650] text-5xl xs:text-6xl sm:text-7xl md:text-8xl tracking-tight text-text-primary leading-[1.04] mb-6">
           From Algorithm
           <br />
           <span className="text-gradient-orange">to Impact</span>
@@ -171,11 +183,11 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div className="flex flex-col xs:flex-row gap-3 justify-center items-center">
-          <Button href="/use-cases" size="lg">
-            See Our Work
+          <Button href="/contact?intent=call" size="lg">
+            Book a Call
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
-            Talk to Us
+          <Button href="/use-cases" variant="outline" size="lg">
+            See Our Work
           </Button>
         </div>
 

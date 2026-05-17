@@ -42,11 +42,11 @@ export function CTABannerSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-xs font-body font-semibold tracking-widest uppercase text-secondary mb-6">
-          Ready to Start?
+        <p className="text-xs font-body font-semibold tracking-[0.18em] text-secondary mb-6">
+          TenXera by Flowithm
         </p>
 
-        <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.12] mb-6">
+        <h2 className="font-display font-[650] text-4xl sm:text-5xl md:text-6xl tracking-tight text-text-primary leading-[1.12] mb-6">
           Power your business
           <br />
           with{' '}
@@ -58,12 +58,13 @@ export function CTABannerSection() {
         </h2>
 
         <p className="text-text-muted text-lg max-w-xl mx-auto mb-10 font-body leading-relaxed">
-          Tell us what you&apos;re trying to solve. We&apos;ll tell you honestly if we can help — and how.
+          Ten<span className="text-primary">X</span>era is Flowithm&apos;s execution framework and product suite. Tell us what you&apos;re solving,
+          and we&apos;ll map the fastest path from AI idea to operational impact.
         </p>
 
         <div className="flex flex-col xs:flex-row gap-3 justify-center items-center">
-          <Button href="/contact" size="lg" className="animate-pulse-glow">
-            Start the Conversation
+          <Button href="/contact?intent=call" size="lg" className="animate-pulse-glow">
+            Book a Call
           </Button>
           <Button href="/use-cases" variant="ghost" size="lg">
             See Our Work First

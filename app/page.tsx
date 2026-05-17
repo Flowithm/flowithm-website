@@ -48,11 +48,11 @@ export default function HomePage() {
       <HeroSection />
       <ProblemSection />
       <WhatWeDoSection />
-      <FrameworkSection />
       <Suspense fallback={<UseCaseHighlightsSkeleton />}>
         <UseCaseHighlightsSection />
       </Suspense>
       <SocialProofSection />
+      <FrameworkSection />
       <CTABannerSection />
     </>
   )

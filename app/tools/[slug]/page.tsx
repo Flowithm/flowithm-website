@@ -114,7 +114,7 @@ export default async function ToolDetailPage({
                 {tool.category && <Badge color="neutral">{tool.category}</Badge>}
                 <Badge color={pricingColor}>{tool.freeOrPaid}</Badge>
               </div>
-              <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
+              <h1 className="font-display font-[650] text-3xl sm:text-4xl text-text-primary tracking-tight">
                 {tool.name}
               </h1>
             </div>
