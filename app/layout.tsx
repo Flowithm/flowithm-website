@@ -20,7 +20,7 @@ const syne = Syne({
 })
 
 export const viewport: Viewport = {
-  themeColor: '#0B0B0B',
+  themeColor: '#111827',
   colorScheme: 'dark',
 }
 
