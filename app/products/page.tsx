@@ -744,7 +744,7 @@ export default function ProductsPage() {
 
             {/* ── CTA ── */}
             <div className="flex flex-col xs:flex-row gap-3">
-              <Button href="/contact?intent=demo" size="lg">Book a Demo</Button>
+              <Button href="/ai-readiness" size="lg">Start Free AI Assessment</Button>
               <Button href="/use-cases" variant="outline" size="lg">See Live Use Cases</Button>
             </div>
 
@@ -774,26 +774,26 @@ export default function ProductsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
-              name: 'IntakeOps',
+              name: 'IntakeFlow',
               role: 'Intake layer',
               desc: 'Ingests and processes incoming emails, documents, and data.',
-              href: '#intakeops',
+              href: '#intakeflow',
               accent: 'text-primary',
               border: 'border-primary/20',
             },
             {
-              name: 'KnowledgeFlow',
+              name: 'KnowledgeGrid',
               role: 'Intelligence layer',
               desc: 'Connects your knowledge and answers questions in real-time.',
-              href: '#knowledgeflow',
+              href: '#knowledgegrid',
               accent: 'text-secondary',
               border: 'border-secondary/20',
             },
             {
-              name: 'ActionOps',
+              name: 'ActionEngine',
               role: 'Execution layer',
               desc: 'Orchestrates actions and decisions across your entire stack.',
-              href: '#actionops',
+              href: '#actionengine',
               accent: 'text-tertiary',
               border: 'border-tertiary/20',
             },

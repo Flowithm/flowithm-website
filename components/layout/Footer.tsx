@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '@/components/ui'
 
 const FOOTER_LINKS = [
   { label: 'Use Cases', href: '/use-cases' },
@@ -55,7 +56,7 @@ export function Footer() {
           </nav>
 
           {/* Contact */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
             <a
               href="mailto:hello@flowithm.io"
               className="text-sm text-text-muted hover:text-primary transition-colors duration-150"
@@ -63,6 +64,9 @@ export function Footer() {
             >
               hello@flowithm.io
             </a>
+            <Button href="/ai-readiness" size="sm" variant="outline" className="w-full md:w-auto">
+              Start AI Readiness Assessment
+            </Button>
           </div>
         </div>
 

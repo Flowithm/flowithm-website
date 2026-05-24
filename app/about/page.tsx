@@ -255,8 +255,8 @@ export default function AboutPage() {
                     <p className="text-text-muted text-lg font-body mb-10 max-w-xl mx-auto leading-relaxed">
                         Tell us your challenge. We&apos;ll give you an honest answer, and if we&apos;re not the right team for the job, we&apos;ll tell you that too.
                     </p>
-                    <Button href="/contact?intent=call" size="lg">
-                        Book a Call
+                    <Button href="/ai-readiness" size="lg">
+                        Start Free AI Assessment
                     </Button>
                 </div>
             </section>
