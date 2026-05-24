@@ -63,8 +63,8 @@ export function CTABannerSection() {
         </p>
 
         <div className="flex flex-col xs:flex-row gap-3 justify-center items-center">
-          <Button href="/contact?intent=call" size="lg" className="animate-pulse-glow">
-            Book a Call
+          <Button href="/ai-readiness" size="lg" className="animate-pulse-glow">
+            Start Free AI Assessment
           </Button>
           <Button href="/use-cases" variant="ghost" size="lg">
             See Our Work First

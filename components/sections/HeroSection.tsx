@@ -43,9 +43,9 @@ export function HeroSection() {
             <defs>
               {/* Road surface */}
               <linearGradient id="hero-road-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#0B0B0B" stopOpacity="0" />
-                <stop offset="55%" stopColor="#0B0B0B" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#0d0d0d" stopOpacity="0.9" />
+                <stop offset="0%" stopColor="#111827" stopOpacity="0" />
+                <stop offset="55%" stopColor="#111827" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#161E2E" stopOpacity="0.9" />
               </linearGradient>
               {/* Left edge — cyan, from vanishing point to bottom-left */}
               <linearGradient id="hero-edge-cyan" gradientUnits="userSpaceOnUse" x1="720" y1="0" x2="0" y2="700">
@@ -183,8 +183,8 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div className="flex flex-col xs:flex-row gap-3 justify-center items-center">
-          <Button href="/contact?intent=call" size="lg">
-            Book a Call
+          <Button href="/ai-readiness" size="lg">
+            Start Free AI Assessment
           </Button>
           <Button href="/use-cases" variant="outline" size="lg">
             See Our Work

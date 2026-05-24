@@ -10,21 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         // Brand palette
-        bg: '#0B0B0B',
+        bg: '#111827',
         primary: '#FF6A00',
         secondary: '#A3FF12',
         tertiary: '#00C2FF',
         accent: '#6C5CE7',
         surface: {
-          DEFAULT: '#111111',
-          2: '#141414',
+          DEFAULT: '#161E2E',
+          2: '#1F2937',
         },
         border: {
-          subtle: '#1F1F1F',
+          subtle: '#243447',
         },
         text: {
           primary: '#F5F5F5',
-          muted: '#888888',
+          muted: '#B0B8C4',
         },
       },
       fontFamily: {
@@ -74,9 +74,9 @@ const config: Config = {
           '50%': { boxShadow: '0 0 40px rgba(255, 106, 0, 0.45)' },
         },
         blob: {
-          '0%':   { transform: 'translate(0, 0) scale(1)' },
-          '33%':  { transform: 'translate(30px, -40px) scale(1.06)' },
-          '66%':  { transform: 'translate(-20px, 20px) scale(0.94)' },
+          '0%': { transform: 'translate(0, 0) scale(1)' },
+          '33%': { transform: 'translate(30px, -40px) scale(1.06)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.94)' },
           '100%': { transform: 'translate(0, 0) scale(1)' },
         },
       },

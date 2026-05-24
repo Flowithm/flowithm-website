@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'Products', href: '/products' },
   { label: 'Use Cases', href: '/use-cases' },
   { label: 'Tools', href: '/tools' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
 ] as const
 
@@ -104,8 +105,8 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center">
-          <Button href="/contact?intent=call" size="sm">
-            Book a Call
+          <Button href="/ai-readiness" size="sm">
+            Start AI Assessment
           </Button>
         </div>
 
@@ -167,8 +168,8 @@ export function Navbar() {
         </ul>
 
         <div className="mt-8">
-          <Button href="/contact?intent=call" size="lg" className="w-full justify-center">
-            Book a Call
+          <Button href="/ai-readiness" size="lg" className="w-full justify-center">
+            Start AI Assessment
           </Button>
         </div>
       </div>
